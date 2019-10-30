@@ -1,0 +1,15 @@
+kumuluzee:
+  name: ride-offer-catalog
+  env:
+    name: dev
+  version: 1.0.0
+  server:
+    base-url: http://localhost:8083
+    http:
+      port: 8083
+  datasources:
+    - jndi-name: jdbc/RideOfferDS
+      connection-url: jdbc:postgresql://localhost:5432/ride-offers
+      username: rso26user
+      password: postgres.rso26
+      max-pool-size: 20
