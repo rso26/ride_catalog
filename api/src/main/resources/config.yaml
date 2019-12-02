@@ -13,3 +13,6 @@ kumuluzee:
       username: rso26user
       password: postgres.rso26
       max-pool-size: 20
+  discovery:
+    etcd:
+      hosts: http://etcd:2379

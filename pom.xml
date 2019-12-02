@@ -23,6 +23,7 @@
         <kumuluzee.version>3.5.0</kumuluzee.version>
         <kumuluzee-rest.version>1.2.3</kumuluzee-rest.version>
         <postgresql.version>42.2.8</postgresql.version>
+        <kumuluzee-discovery.version>1.1.1</kumuluzee-discovery.version>
     </properties>
 
     <repositories>
@@ -59,6 +60,12 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.kumuluz.ee.discovery</groupId>
+                <artifactId>kumuluzee-discovery-etcd</artifactId>
+                <version>${kumuluzee-discovery.version}</version>
             </dependency>
 
             <dependency>

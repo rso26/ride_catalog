@@ -3,6 +3,7 @@ package com.github.rso26.ride_catalogue.api.v1.resources;
 import com.github.rso26.ride_catalog.lib.dtos.RideOffer;
 import com.github.rso26.ride_catalogue.models.enums.State;
 import com.github.rso26.ride_catalogue.services.beans.RideOfferBean;
+import com.kumuluz.ee.common.runtime.EeRuntime;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -23,6 +24,14 @@ public class RideOfferResource {
 
     @Context
     protected UriInfo uriInfo;
+
+    @GET
+    @Path("instanceid")
+    public Response getInstanceId() {
+        String instanceId =
+                "{\"instanceId\" : \"" + EeRuntime.getInstance().getInstanceId() + "\"}";
+        return Response.ok(instanceId).build();
+    }
 
     @GET
     public Response getRideOffers() {

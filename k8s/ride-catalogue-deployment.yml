@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ride-catalogue-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ride-catalogue
+  template:
+    metadata:
+      labels:
+        app: ride-catalogue
+    spec:
+      containers:
+        - image: rso26/ride-catalogue:1.0.0-SNAPSHOT-3.1
+          name: ride-catalogue
+          env:
+            - name: KUMULUZEE_DISCOVERY_CLUSTER
+              value: gcloud
+            - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
+              value: http://etcd:2379
+          ports:
+            - containerPort: 8083
+              name: server
+              protocol: TCP
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: ride-catalogue
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: server
+  selector:
+    app: ride-catalogue
