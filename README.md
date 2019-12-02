@@ -5,7 +5,7 @@ Prevoznikom omogoča dodajanje novega prevoza in spreminjanje aktivnega (obstoje
 Za shranjevanje podatkov se uporablja podatkovna baza Postgres (s ustreznimi parametri, glej [config.yaml](api/src/main/resources/config.yaml)).
 
 ```bash
-docker run -d --name pg-ride-offers -e POSTGRES_USER=rso26user -e POSTGRES_PASSWORD=postgres.rso26 -e POSTGRES_DB=ride-offers -p 5432:5432 postgres:12
+docker-compose -f docker-compose.yml up
 ```
 ## Primeri uporabe
 

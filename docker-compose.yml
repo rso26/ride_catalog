@@ -1,0 +1,20 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:12
+    #    ports:
+    #      - 5432:5432
+    environment:
+      POSTGRES_USER: rso26user
+      POSTGRES_PASSWORD: postgres.rso26
+      POSTGRES_DB: ride-offers
+  ride-catalogue:
+    image: rso26/ride-catalogue:1.0-SNAPSHOT-1
+    ports:
+      - 8083:8083
+    environment:
+      KUMULUZEE_DATASOURCES0_CONNECTIONURL: jdbc:postgresql://postgres:5432/ride-offers
+    #      KUMULUZEE_CONFIG_ETCD_HOSTS: http://etcd:2379
+    #      KUMULUZEE_DISCOVERY_ETCD_HOSTS: http://etcd:2379
+    depends_on:
+      - postgres
